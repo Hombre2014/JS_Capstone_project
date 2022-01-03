@@ -4,28 +4,29 @@
 
 > API-based webapp
 
-![screenshot](./)
+# Wireframe of App
 
-In this exercise you will build a simple yet powerful webpack boilerplate, which you can later use as a starting point in your projects.
+## The Home Page  low fidelity
+![Home.png](./Home.png)
+
+## The low fidelity for comment pop up page
+![ForComments.png](./ForComments.png)
+
+
+
+## Description
+The JavaScript capstone project  is about building your own web application based on an external API. You will select an API that provides data about a topic that you like and then build the webapp around it. 
 
 ## Instructions:
 
-- First set up a new GitHub repository for this exercise.
-- Follow the instructions from the getting [started guide](https://webpack.js.org/guides/getting-started/#basic-setup) to set up the basics. Implement all the steps from Basic Setup to NPM Scripts.
+ ### Cloning the repo to your local system (if you already have git, installed in your system)
 
-## Add HTML:
+ 1) [Copy this Link](https://github.com/Hombre2014/JS_Capstone_project.git)
+ 2) Open your terminal or command line
+ 3) [git clone](https://github.com/Hombre2014/JS_Capstone_project.git)
+ 4) Open the folder with your code editor
+ 5) Now You can edit the code and check the changes in the browser using Live Server
 
-- You already know that all the distribution files will be placed in /dist directory. You also know that you should not create files manually in the /dist folder, as there's a risk they will be overwritten. Therefore, install the HtmlWebpackPlugin to automatically create the index.html file in the /dist directory.
-- Follow the instructions from the [setting up HtmlWebpackPlugin guide](https://webpack.js.org/guides/output-management/#setting-up-htmlwebpackplugin). Be extra careful when updating the module.exports object in your webpack.config.js file, to not to make any nesting mistakes.
-- Now delete all the files from the /dist directory and run:
-`npm run build`
-
-## Setup local dev server
-
-Finally, it's time to improve your developer experience. When working on the project you will not want to run the build command from the terminal every time you make a change in the code. Therefore go ahead and install a webpack dev server, which will watch your source files, generate compiled distribution files and even refresh the browser every time you save changes in the source code.
-
-- Follow the [using webpack-dev-server](https://webpack.js.org/guides/development/#using-webpack-dev-server) guide and set it up on your local machine. Again, be cautious with updating the module.exports object in your webpack.config.js.
-- Once these steps are complete, you should see your application working at: http://localhost:8080/. Every change you make in js or css files now should be reflected in a browser a few seconds later.
 
 ## Built With
 
