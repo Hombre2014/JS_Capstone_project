@@ -2,10 +2,25 @@
 
 .header-section {
   display: flex;
+  flex-direction: column;
   margin-top: -0.5rem;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
+}
+
+.botHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.menuItems {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 25%;
 }
 
 .logo {
