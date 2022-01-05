@@ -1,6 +1,6 @@
 import './style.css';
 import logo from './logoImage.jpg';
-import { getBooks, storeISBNS, getBookInfo} from './getBooks.js';
+import { getBooks, getBookInfo} from './getBooks.js';
 
 //Adding the logo image
 const element = document.querySelector('.logoContainer');
@@ -11,19 +11,24 @@ mylogo.src = logo;
 element.append(mylogo);
 
 //ISBN array
-const myISBN = [];
+let bookID = []
+let frontPageInfo = [];
 
-//Dealing books API
-
-const BookArray = getBooks();
-//console.log(BookArray);
-//Finding add the ISBNs
-
-console.log(storeISBNS);
-console.log(getBookInfo(storeISBNS[0]));
-/*const generateID = () =>{
-    for(let i=0 ;i<storeISBNS.length; i++){
-       console.log(getBookInfo(storeISBNS[i]));
+//Store ISBN numbers in an array
+const storeID = async() =>{
+    const bookResponse = await getBooks();
+    for(let i=0 ; bookResponse.docs.length;i++){
+        bookID.push(bookResponse.docs[i].isbn[0])
     }
-}*/
-//generateID();
+}
+
+const callBooks = async () =>{
+    for(let i=0; i<8; i++){
+      let bookInfo = await getBookInfo(bookID[i]);
+      frontPageInfo.push(bookInfo);
+    }
+}
+storeID()
+callBooks()
+
+console.log(frontPageInfo);
