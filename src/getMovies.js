@@ -4,19 +4,34 @@ export const getMovies = async (baseUrl) => {
   return data;
 };
 
-/*export const getShows = async (url) => {
-  fetch(url)
-  .then((res) => res.json())
-  
-};*/
+const frontMovies = document.querySelector('.Shows');
 
-export function getShows(url) {
-  fetch(url)
-  .then((res) => res.json())
-  .then((data) => {
-    for(var i = 0; i < 20; i += 1) {
-      movieID.push(data[i]);
-    }
-    console.log(movieID);
-  })
+const popShow = (arr) => {
+  frontMovies.innerHTML = '';
+  arr.forEach((movie) => {
+    const eachMovie = `<div class=movie id=${movie.id}>
+           <h1 class="movie-title">${movie.name}</h1>
+           <img class="movie-image" src=${movie.image.medium}>
+           
+           <div class= "userInterAct">
+             <button class="commentBtn btn-${movie.id}">comment</button>
+             <i class="fas fa-heart" data-id="${movie.id}"></i>
+          </div>
+        </div>`;
+    frontMovies.insertAdjacentHTML('beforeend', eachMovie);
+  });
+};
+
+export function getShows() {
+  fetch('https://api.tvmaze.com/shows')
+    .then((res) => res.json())
+    .then((data) => {
+      for (var i = 0; i < 20; i += 1) {
+        showsList.push(data[i]);
+      }
+      console.log(showsList);
+      popShow(showsList);
+    })
 }
+
+export let showsList = [];
