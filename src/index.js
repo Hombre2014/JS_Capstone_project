@@ -1,7 +1,10 @@
 import './style.css';
 import logo from './logoImage.jpg';
-import { getBooks, getBookInfo} from './getBooks.js';
+import { getMovies, getShows} from './getBooks.js';
 
+const baseUrl ="https://api.tvmaze.com";
+const frontMovies = document.querySelector('.Shows')
+let frontShows = [];
 //Adding the logo image
 const element = document.querySelector('.logoContainer');
 const mylogo = new Image();
@@ -10,25 +13,31 @@ mylogo.src = logo;
 
 element.append(mylogo);
 
-//ISBN array
-let bookID = []
-let frontPageInfo = [];
+//calling shows
 
-//Store ISBN numbers in an array
-const storeID = async() =>{
-    const bookResponse = await getBooks();
-    for(let i=0 ; bookResponse.docs.length;i++){
-        bookID.push(bookResponse.docs[i].isbn[0])
-    }
+const callShow = async () =>{
+  for(let i=1; i<9; i++){
+     let show = await getShows(`${baseUrl}/shows/${i}`);
+     frontShows.push(show);
+  } 
+  //console.log(frontShows.length)
+  popShow(frontShows)
 }
 
-const callBooks = async () =>{
-    for(let i=0; i<8; i++){
-      let bookInfo = await getBookInfo(bookID[i]);
-      frontPageInfo.push(bookInfo);
-    }
-}
-storeID()
-callBooks()
 
-console.log(frontPageInfo);
+const popShow = (arr) => {
+  frontMovies.innerHTML='';
+  //console.log(arr.length);
+  arr.forEach((movie) => {
+      const eachMovie = 
+      `<div class=pages>
+         <p>${movie.name}</p>
+         <img src=${movie.image.medium}>
+      </div>`;
+    
+    frontMovies.insertAdjacentHTML('beforeend',eachMovie);
+  });
+  //console.log(frontShows[0].name);
+  
+}
+callShow();

@@ -1,11 +1,11 @@
-export const getBooks = async() => {
-   const response = await fetch('https://openlibrary.org/search.json?q=javascript,first_publish_year:2021');
+export const getMovies = async(baseUrl) => {
+   const response = await fetch(baseUrl);
     var data = await response.json();
     return data;
 }
 
-export const getBookInfo = async (bookID) =>{
-    const response = await fetch(`https://openlibrary.org/api/books?bibkeys=ISBN:${bookID}`);
-     var data = await response.text();
+export const getShows = async (url) =>{
+    const response = await fetch(url);
+     var data = await response.json();
      return data;
 }

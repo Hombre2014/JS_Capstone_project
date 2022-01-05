@@ -32,3 +32,8 @@
 .appTitle {
   font-family: 'Roboto', sans-serif;
 }
+
+.Shows {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
