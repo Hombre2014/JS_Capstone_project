@@ -16,7 +16,7 @@
   \*************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \"\\r\\n\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://webpack-setup/./src/style.css?./node_modules/css-loader/dist/cjs.js");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n___CSS_LOADER_EXPORT___.push([module.id, \"@import url(https://fonts.googleapis.com/css2?family=Roboto&display=swap);\"]);\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \".header-section {\\r\\n  display: flex;\\r\\n  flex-direction: column;\\r\\n  margin-top: -0.5rem;\\r\\n  justify-content: space-between;\\r\\n  align-items: center;\\r\\n  padding: 0.5rem;\\r\\n}\\r\\n\\r\\n.botHeader {\\r\\n  display: flex;\\r\\n  justify-content: space-between;\\r\\n  width: 100%;\\r\\n}\\r\\n\\r\\n.menuItems {\\r\\n  list-style: none;\\r\\n  display: flex;\\r\\n  justify-content: space-between;\\r\\n  align-items: center;\\r\\n  width: 25%;\\r\\n}\\r\\n\\r\\n.logo {\\r\\n  height: 100px;\\r\\n  border-radius: 50%;\\r\\n  width: 80px;\\r\\n}\\r\\n\\r\\n.appTitle {\\r\\n  font-family: 'Roboto', sans-serif;\\r\\n}\\r\\n\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://webpack-setup/./src/style.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -110,23 +110,33 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/getBooks.js":
+/*!*************************!*\
+  !*** ./src/getBooks.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getBooks\": () => (/* binding */ getBooks)\n/* harmony export */ });\nconst getBooks = () => {\r\n    fetch('https://openlibrary.org/search.json?q=javascript,first_publish_year:2021')\r\n    .then((res) => res.json())\r\n    .then((data) => console.log(data.docs))\r\n}    \n\n//# sourceURL=webpack://webpack-setup/./src/getBooks.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _logoImage_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./logoImage.png */ \"./src/logoImage.png\");\n\r\n\r\n\r\nconst element = document.querySelector('.logoImage');\r\nconst mylogo = new Image();\r\nmylogo.src = _logoImage_png__WEBPACK_IMPORTED_MODULE_1__;\r\n\r\nelement.append(mylogo);\r\n\r\n\n\n//# sourceURL=webpack://webpack-setup/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _logoImage_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./logoImage.jpg */ \"./src/logoImage.jpg\");\n/* harmony import */ var _getBooks_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getBooks.js */ \"./src/getBooks.js\");\n\r\n\r\n\r\n\r\n//Adding the logo image\r\nconst element = document.querySelector('.logoContainer');\r\nconst mylogo = new Image();\r\nmylogo.className = 'logo';\r\nmylogo.src = _logoImage_jpg__WEBPACK_IMPORTED_MODULE_1__;\r\n\r\nelement.append(mylogo);\r\n\r\n\r\n//BaseURL\r\nconsole.log((0,_getBooks_js__WEBPACK_IMPORTED_MODULE_2__.getBooks)());\n\n//# sourceURL=webpack://webpack-setup/./src/index.js?");
 
 /***/ }),
 
-/***/ "./src/logoImage.png":
+/***/ "./src/logoImage.jpg":
 /*!***************************!*\
-  !*** ./src/logoImage.png ***!
+  !*** ./src/logoImage.jpg ***!
   \***************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"411f066559a822842fcb.png\";\n\n//# sourceURL=webpack://webpack-setup/./src/logoImage.png?");
+eval("module.exports = __webpack_require__.p + \"50902097479e717c2107.jpg\";\n\n//# sourceURL=webpack://webpack-setup/./src/logoImage.jpg?");
 
 /***/ })
 
