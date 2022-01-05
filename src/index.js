@@ -30,7 +30,7 @@ const popShow = (arr) => {
   //console.log(arr.length);
   arr.forEach((movie) => {
       const eachMovie = 
-      `<div class=movie>
+      `<div class=movie id=${movie.id}>
          <h1 class="movie-title">${movie.name}</h1>
          <img class="movie-image" src=${movie.image.medium}>
       </div>`;
