@@ -35,5 +35,22 @@
 
 .Shows {
   display: grid;
+  gap: 12px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.movie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #000;
+  padding-bottom: 1rem;
+}
+
+.movie-title {
+  font-family: "Roboto",sans-serif;
+}
+
+.movie-image {
+  width: 200px;
 }

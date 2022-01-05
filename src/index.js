@@ -30,9 +30,9 @@ const popShow = (arr) => {
   //console.log(arr.length);
   arr.forEach((movie) => {
       const eachMovie = 
-      `<div class=pages>
-         <p>${movie.name}</p>
-         <img src=${movie.image.medium}>
+      `<div class=movie>
+         <h1 class="movie-title">${movie.name}</h1>
+         <img class="movie-image" src=${movie.image.medium}>
       </div>`;
     
     frontMovies.insertAdjacentHTML('beforeend',eachMovie);
