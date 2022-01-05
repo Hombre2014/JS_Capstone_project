@@ -32,3 +32,32 @@
 .appTitle {
   font-family: 'Roboto', sans-serif;
 }
+
+.Shows {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.movie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #000;
+  padding-bottom: 1rem;
+}
+
+.movie-title {
+  font-family: "Roboto", sans-serif;
+}
+
+.movie-image {
+  width: 200px;
+}
+
+.userInterAct {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  width: 60%;
+}

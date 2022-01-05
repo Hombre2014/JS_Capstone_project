@@ -16,7 +16,7 @@
   \*************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \"\\r\\n\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://webpack-setup/./src/style.css?./node_modules/css-loader/dist/cjs.js");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n___CSS_LOADER_EXPORT___.push([module.id, \"@import url(https://fonts.googleapis.com/css2?family=Roboto&display=swap);\"]);\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \".header-section {\\n  display: flex;\\n  flex-direction: column;\\n  margin-top: -0.5rem;\\n  justify-content: space-between;\\n  align-items: center;\\n  padding: 0.5rem;\\n}\\n\\n.botHeader {\\n  display: flex;\\n  justify-content: space-between;\\n  width: 100%;\\n}\\n\\n.menuItems {\\n  list-style: none;\\n  display: flex;\\n  justify-content: space-between;\\n  align-items: center;\\n  width: 25%;\\n}\\n\\n.logo {\\n  height: 100px;\\n  border-radius: 50%;\\n  width: 80px;\\n}\\n\\n.appTitle {\\n  font-family: 'Roboto', sans-serif;\\n}\\n\\n.Shows {\\n  display: grid;\\n  gap: 12px;\\n  grid-template-columns: 1fr 1fr 1fr 1fr;\\n}\\n\\n.movie {\\n  display: flex;\\n  flex-direction: column;\\n  align-items: center;\\n  border: 1px solid #000;\\n  padding-bottom: 1rem;\\n}\\n\\n.movie-title {\\n  font-family: \\\"Roboto\\\", sans-serif;\\n}\\n\\n.movie-image {\\n  width: 200px;\\n}\\n\\n.userInterAct {\\n  display: flex;\\n  justify-content: space-between;\\n  margin-top: 0.5rem;\\n  width: 60%;\\n}\\n\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://webpack-setup/./src/style.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -110,23 +110,33 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/getMovies.js":
+/*!**************************!*\
+  !*** ./src/getMovies.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getMovies\": () => (/* binding */ getMovies),\n/* harmony export */   \"getShows\": () => (/* binding */ getShows),\n/* harmony export */   \"showsList\": () => (/* binding */ showsList)\n/* harmony export */ });\nconst getMovies = async (baseUrl) => {\n  const response = await fetch(baseUrl);\n  const data = await response.json();\n  return data;\n};\n\nconst frontMovies = document.querySelector('.Shows');\n\nconst popShow = (arr) => {\n  frontMovies.innerHTML = '';\n  arr.forEach((movie) => {\n    const eachMovie = `<div class=movie id=${movie.id}>\n           <h1 class=\"movie-title\">${movie.name}</h1>\n           <img class=\"movie-image\" src=${movie.image.medium}>\n           \n           <div class= \"userInterAct\">\n             <button class=\"commentBtn btn-${movie.id}\">comment</button>\n             <i class=\"fas fa-heart\" data-id=\"${movie.id}\"></i>\n          </div>\n        </div>`;\n    frontMovies.insertAdjacentHTML('beforeend', eachMovie);\n  });\n};\n\nfunction getShows() {\n  fetch('https://api.tvmaze.com/shows')\n    .then((res) => res.json())\n    .then((data) => {\n      for (var i = 0; i < 20; i += 1) {\n        showsList.push(data[i]);\n      }\n      console.log(showsList);\n      popShow(showsList);\n    })\n}\n\nlet showsList = [];\n\n//# sourceURL=webpack://webpack-setup/./src/getMovies.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _logoImage_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./logoImage.png */ \"./src/logoImage.png\");\n\r\n\r\n\r\nconst element = document.querySelector('.logoImage');\r\nconst mylogo = new Image();\r\nmylogo.src = _logoImage_png__WEBPACK_IMPORTED_MODULE_1__;\r\n\r\nelement.append(mylogo);\r\n\r\n\n\n//# sourceURL=webpack://webpack-setup/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _logoImage_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./logoImage.jpg */ \"./src/logoImage.jpg\");\n/* harmony import */ var _getMovies_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getMovies.js */ \"./src/getMovies.js\");\n\n\n\n\nconst baseUrl = 'https://api.tvmaze.com';\n\n// Adding the logo image\nconst element = document.querySelector('.logoContainer');\nconst mylogo = new Image();\nmylogo.className = 'logo';\nmylogo.src = _logoImage_jpg__WEBPACK_IMPORTED_MODULE_1__;\n\nelement.append(mylogo);\n\n(0,_getMovies_js__WEBPACK_IMPORTED_MODULE_2__.getShows)();\n\n//# sourceURL=webpack://webpack-setup/./src/index.js?");
 
 /***/ }),
 
-/***/ "./src/logoImage.png":
+/***/ "./src/logoImage.jpg":
 /*!***************************!*\
-  !*** ./src/logoImage.png ***!
+  !*** ./src/logoImage.jpg ***!
   \***************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"411f066559a822842fcb.png\";\n\n//# sourceURL=webpack://webpack-setup/./src/logoImage.png?");
+eval("module.exports = __webpack_require__.p + \"50902097479e717c2107.jpg\";\n\n//# sourceURL=webpack://webpack-setup/./src/logoImage.jpg?");
 
 /***/ })
 
