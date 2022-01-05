@@ -1,12 +1,11 @@
 import './style.css';
 import logo from './logoImage.jpg';
-import heart from './heartReact.png';
-import { getMovies, getShows} from './getBooks.js';
+import { getShows } from './getMovies.js';
 
-const baseUrl ="https://api.tvmaze.com";
-const frontMovies = document.querySelector('.Shows')
-let frontShows = [];
-//Adding the logo image
+const baseUrl = 'https://api.tvmaze.com';
+const frontMovies = document.querySelector('.Shows');
+const frontShows = [];
+// Adding the logo image
 const element = document.querySelector('.logoContainer');
 const mylogo = new Image();
 mylogo.className = 'logo';
@@ -14,34 +13,32 @@ mylogo.src = logo;
 
 element.append(mylogo);
 
-//calling shows
-
-const callShow = async () =>{
-  for(let i=1; i<9; i++){
-     let show = await getShows(`${baseUrl}/shows/${i}`);
-     frontShows.push(show);
-  } 
-  //console.log(frontShows.length)
-  popShow(frontShows)
-}
-
+// Pop SHow
 
 const popShow = (arr) => {
-  frontMovies.innerHTML='';
-  //console.log(arr.length);
+  frontMovies.innerHTML = '';
   arr.forEach((movie) => {
-      const eachMovie = 
-      `<div class=movie id=${movie.id}>
-         <h1 class="movie-title">${movie.name}</h1>
-         <img class="movie-image" src=${movie.image.medium}>
-         
-         <div class= "userInterAct">
-           <button class=commentBtn btn-${movie.id}>comment</button>
-           <i class="fas fa-heart"></i>
-        </div>
-      </div>`;
-    
-    frontMovies.insertAdjacentHTML('beforeend',eachMovie);
-  });  
-}
+    const eachMovie = `<div class=movie id=${movie.id}>
+           <h1 class="movie-title">${movie.name}</h1>
+           <img class="movie-image" src=${movie.image.medium}>
+           
+           <div class= "userInterAct">
+             <button class=commentBtn btn-${movie.id}>comment</button>
+             <i class="fas fa-heart"></i>
+          </div>
+        </div>`;
+
+    frontMovies.insertAdjacentHTML('beforeend', eachMovie);
+  });
+};
+
+// calling shows
+const callShow =  () => {
+    const show =  getShows(`${baseUrl}/shows`);
+    console.log(show);
+    show.splice(19,250);
+    frontShows=show;
+    popShow(frontShows);
+  }
 callShow();
+console.log(frontShows.length)
