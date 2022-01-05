@@ -1,5 +1,6 @@
 import './style.css';
 import logo from './logoImage.jpg';
+import heart from './heartReact.png';
 import { getMovies, getShows} from './getBooks.js';
 
 const baseUrl ="https://api.tvmaze.com";
@@ -33,11 +34,14 @@ const popShow = (arr) => {
       `<div class=movie id=${movie.id}>
          <h1 class="movie-title">${movie.name}</h1>
          <img class="movie-image" src=${movie.image.medium}>
+         
+         <div class= "userInterAct">
+           <button class=commentBtn btn-${movie.id}>comment</button>
+           <i class="fas fa-heart"></i>
+        </div>
       </div>`;
     
     frontMovies.insertAdjacentHTML('beforeend',eachMovie);
-  });
-  //console.log(frontShows[0].name);
-  
+  });  
 }
 callShow();
