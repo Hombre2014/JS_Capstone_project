@@ -14,15 +14,17 @@ export default function getShows() {
       for (let i = 0; i < 16; i += 1) {
         showsList.push(data[i]);
       }
-      genArr(showsList);
+      //genArr(showsList);
+      popShow(showsList);
     });
+    
 }
 
-const popShow = (arr, likeArray) => {
+const popShow = async(arr) => {
   frontMovies.innerHTML = '';
-  console.log(likeArray);
-  arr.forEach((movie, index) => {
-    
+  console.log("I come back");
+  const likeArray = await getLikes();
+   arr.forEach((movie, index) => {
     let eachMovie = `<div class=movie id=${movie.id}>
            <h1 class="movie-title">${movie.name}</h1>
            <img class="movie-image" src=${movie.image.medium}>
@@ -46,20 +48,21 @@ const popShow = (arr, likeArray) => {
           }
                
     frontMovies.insertAdjacentHTML('beforeend', eachMovie);
- 
-    document.querySelectorAll('.fas').forEach((Heartbtn) => {
+
+    const likeContainer = document.querySelectorAll('.likes');
+    document.querySelectorAll('.fas').forEach((Heartbtn,index) => {
       Heartbtn.addEventListener('click', (e) => {
-        console.log(e.target);
-        postLike(e.target.dataset.id);
-        getShows();
-        e.preventDefault();
+        const heartID = index;  
+        postLike(heartID);
+        console.log(index);
+        likeContainer[index].innerHTML = `${likeArray[index].likes+1} Likes`;
+        likeArray[index].likes = likeArray[index].likes+1;
+       });
       });
     });
-  });
 };
 
-const genArr = async (listOfShows) => {
-  myArr = await getLikes();
-  console.log(myArr)
-  popShow(listOfShows, myArr);
-};
+ 
+
+
+
