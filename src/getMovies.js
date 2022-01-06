@@ -22,8 +22,8 @@ export default function getShows() {
 
 const popShow = async(arr) => {
   frontMovies.innerHTML = '';
+  const likeArray = getLikes();
   console.log("I come back");
-  const likeArray = await getLikes();
    arr.forEach((movie, index) => {
     let eachMovie = `<div class=movie id=${movie.id}>
            <h1 class="movie-title">${movie.name}</h1>
@@ -52,11 +52,11 @@ const popShow = async(arr) => {
     const likeContainer = document.querySelectorAll('.likes');
     document.querySelectorAll('.fas').forEach((Heartbtn,index) => {
       Heartbtn.addEventListener('click', (e) => {
-        const heartID = index;  
-        postLike(heartID);
+        const heartID = index+1;  
+        postLike(`${heartID}`);
         console.log(index);
-        likeContainer[index].innerHTML = `${likeArray[index].likes+1} Likes`;
-        likeArray[index].likes = likeArray[index].likes+1;
+        //likeContainer[index].innerHTML = `${likeArray[index].likes+1} Likes`;
+        //likeArray[index].likes = likeArray[index].likes+1;
        });
       });
     });
