@@ -4,7 +4,7 @@ import { postLike, getLikes } from './getLikes.js';
 
 const frontMovies = document.querySelector('.Shows');
 const showsList = [];
-let myArr = [];
+// let myArr = [];
 // Generate like array
 
 export default function getShows() {
@@ -17,14 +17,13 @@ export default function getShows() {
       //genArr(showsList);
       popShow(showsList);
     });
-    
 }
 
-const popShow = async(arr) => {
+const popShow = async (arr) => {
   frontMovies.innerHTML = '';
-  console.log("I come back");
   const likeArray = await getLikes();
-   arr.forEach((movie, index) => {
+  console.log("This is like Array: ", likeArray);
+  arr.forEach((movie, index) => {
     let eachMovie = `<div class=movie id=${movie.id}>
            <h1 class="movie-title">${movie.name}</h1>
            <img class="movie-image" src=${movie.image.medium}>
@@ -33,36 +32,31 @@ const popShow = async(arr) => {
              
              <div class='likesCont'>
                <i class="fas fa-heart" data-id=${movie.id}></i>`;
-
-              if(likeArray[index]===undefined){
-                 eachMovie+=`<p class="likes"> 0 Likes</p>
+    if (likeArray[index] === undefined) {
+      eachMovie += `<p class="likes"> 0 Likes</p>
                  </div>
              </div>
            </div>`;
-          }
-          else {
-            eachMovie+=`<p class="likes">${likeArray[index].likes} Likes</p>
+    }
+    else {
+      eachMovie += `<p class="likes">${likeArray[index].likes} Likes</p>
                  </div>
              </div>
            </div>`;
-          }
-               
+    }
     frontMovies.insertAdjacentHTML('beforeend', eachMovie);
 
     const likeContainer = document.querySelectorAll('.likes');
-    document.querySelectorAll('.fas').forEach((Heartbtn,index) => {
-      Heartbtn.addEventListener('click', (e) => {
-        const heartID = index;  
-        postLike(heartID);
-        console.log(index);
-        likeContainer[index].innerHTML = `${likeArray[index].likes+1} Likes`;
-        likeArray[index].likes = likeArray[index].likes+1;
-       });
+    document.querySelectorAll('.fas').forEach((Heartbtn, index) => {
+      index += 1;
+      // console.log("Index for like buttons: ", index);
+      Heartbtn.addEventListener('click', () => {
+        const heartID = index;
+        console.log("The ID we are posting to API: ", index);
+        postLike(`${heartID}`);
+        // likeContainer[index].innerHTML = `${likeArray[index].likes + 1} Likes`;
+        // likeArray[index].likes += 1;
       });
     });
+  });
 };
-
- 
-
-
-
