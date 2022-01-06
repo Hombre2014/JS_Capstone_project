@@ -7,6 +7,6 @@ export function getMovies() {
       for (let i = 0; i < 20; i += 1) {
         movieID.push(data[i]);
       }
-      console.log(movieID);
+      // console.log(movieID);
     });
 }
