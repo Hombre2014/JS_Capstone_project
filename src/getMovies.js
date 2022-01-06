@@ -1,4 +1,6 @@
 // import createModal from './comments.js';
+import { submitComment, displayComments } from './comments.js';
+
 export const showsList = [];
 const frontMovies = document.querySelector('.Shows');
 const modalPopUp = document.querySelector('.modal');
@@ -18,12 +20,25 @@ const popShow = (arr) => {
   });
 };
 
+// export function addComment(showID) {
+//   // preventDefault();
+//   // const id = +e.target.dataset.id;
+//   console.log(showID);
+//   let userName = document.getElementById('name').value;
+//   let comment = document.getElementById('comment-text').value;
+//   submitComment(`'${showID}'`, userName, comment);
+//   userName = '';
+//   comment = '';
+// }
+
 export function createModal(showID) {
   const closeBtn = document.getElementsByClassName('close-btn');
   modalPopUp.style.display = 'block';
   modalPopUp.style.width = '90vw';
   modalPopUp.style.height = '90vh';
   modalPopUp.style.backgroundColor = '#f6f6f6';
+  console.log("ShowID received from clicked button: ", showID);
+  // showID += 1;
   const content = `
   <div class="show-container">
     <span class="close-btn">×</span>
@@ -38,7 +53,7 @@ export function createModal(showID) {
         <div class="meta">
           <div class="left-side">
             <span>Language: ${showsList[showID].language}</span>
-            <span>Genre: ${showsList[showID].genres}</span>
+            <span>Genre: ${showsList[showID].genres[0]}, ${showsList[showID].genres[1]}, ${showsList[showID].genres[2]}</span>
           </div>
           <div class="right-side">
             <span>Rating: ${showsList[showID].rating.average}</span>
@@ -49,12 +64,14 @@ export function createModal(showID) {
     </div>
     <div class="comments-section">
       <h2>Comments <span class="comments-count"> </span></h2>
-      <div class="comments-list"></div>
+      <div class="comments-list">
+        <p id="dummy"></p>
+      </div>
       <h3>Add a new comment</h3>
-      <form id="form">
-        <input type="text" placeholder="Your name" id="name">
-        <textarea id="comment-text" placeholder="Your comment" maxlength="500" rows="4"></textarea>
-        <button id="submit-btn" type="submit">Comment</button>
+      <form id="form" data-id=${showID + 1}>
+        <input type="text" placeholder="Your name" id="name" data-id=${showID + 1}>
+        <textarea id="comment-text" data-id=${showID + 1} placeholder="Your comment" maxlength="500" rows="4"></textarea>
+        <button id="submit-btn" type="submit" data-id=${showID + 1}>Comment</button>
       </form>
     </div>
   </div>
@@ -63,6 +80,17 @@ export function createModal(showID) {
   closeBtn[0].addEventListener('click', () => {
     modalPopUp.style.display = 'none';
   });
+  const newPost = document.getElementById('form');
+  newPost.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let userName = document.getElementById('name').value;
+    let comment = document.getElementById('comment-text').value;
+    submitComment(`'${showID}'`, userName, comment);
+    // userName = '';
+    // comment = '';
+  });
+  showID += 1;
+  displayComments(`'${showID}'`);
   // When the user clicks anywhere outside of the modal, close it
   // window.onclick = (event) => {
   //   if (!event.target === modalPopUp) {
@@ -93,5 +121,5 @@ export default async function getShows() {
       createModal(ID - 1);
     });
   });
-  return showsList;
+  // return showsList;
 }
