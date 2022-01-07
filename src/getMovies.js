@@ -6,8 +6,10 @@ const frontMovies = document.querySelector('.Shows');
 const modalPopUp = document.querySelector('.modal');
 
 const popShow = async (arr, likeArray) => {
+  const counter = document.getElementsByClassName('movies-counter');
+  const count = likeArray.length;
+  counter[0].innerText = `(${count})`;
   frontMovies.innerHTML = '';
-
   arr.forEach((movie, index) => {
     let eachMovie = `
     <div class=movie id=${movie.id}>
@@ -30,7 +32,6 @@ const popShow = async (arr, likeArray) => {
     }
     frontMovies.insertAdjacentHTML('beforeend', eachMovie);
   });
-
   const likeIcons = document.querySelectorAll('.fa-heart');
   const likeContainer = document.querySelectorAll('.likes');
   likeIcons.forEach((like, index) => {
@@ -58,18 +59,6 @@ function convertDate(date) {
   const ddChars = dd.split('');
   return `${yyyy}-${mmChars[1] ? mm : `0${mmChars[0]}`}-${ddChars[1] ? dd : `0${ddChars[0]}`}`;
 }
-
-export function moviesCount() {
-  console.log("ShowsList:", showsList);
-  const count = showsList.length;
-  console.log("Count", count);
-  return count;
-}
-
-const counter = document.getElementsByClassName('movies-counter');
-console.log(counter);
-const number = moviesCount();
-counter[0].innerText = `(${number})`;
 
 export function createModal(showID) {
   const closeBtn = document.getElementsByClassName('close-btn');

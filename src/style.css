@@ -80,10 +80,13 @@ body {
 
 .fa-heart {
   margin-right: 0.5rem;
+  cursor: pointer;
 }
 
-.comment-btn {
-
+.fa-heart:hover {
+  color: #f00;
+  transform: scale(1.25);
+  transition: all 0.5s;
 }
 
 .modal {
@@ -166,15 +169,17 @@ textarea {
   padding: 4px 8px;
   border-radius: 4px;
   border: 1px solid #000;
-  background-color: #0dbae6;
-  box-shadow: 2px 2px 2px;
+  background-color: #0dbae6 !important;
+  box-shadow: 2px 2px 4px;
   cursor: pointer;
+}
+
+button:hover,
+#submit-btn:hover {
+  background-color: #2c8ce6 !important;
+  box-shadow: 1px 1px 2px;
 }
 
 .comment-btn {
   margin-top: 0;
-}
-
-#submit-btn:hover {
-  background-color: #2c8ce6;
 }
