@@ -155,3 +155,13 @@ textarea {
 #submit-btn:hover {
   background-color: #2c8ce6;
 }
+
+.footer {
+  border-top: 1px solid #000;
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.licence {
+  font-family: 'Roboto',sans-serif;
+}
