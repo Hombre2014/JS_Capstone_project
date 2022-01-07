@@ -5,7 +5,7 @@ export const showsList = [];
 const frontMovies = document.querySelector('.Shows');
 const modalPopUp = document.querySelector('.modal');
 
-const popShow = async (arr, likeArray) => {
+export const popShow = async (arr, likeArray) => {
   const counter = document.getElementsByClassName('movies-counter');
   const count = likeArray.length;
   counter[0].innerText = `(${count})`;

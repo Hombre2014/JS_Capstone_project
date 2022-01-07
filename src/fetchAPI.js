@@ -1,6 +1,6 @@
 export const movieID = [];
 
-export function getMovies() {
+export function callShows() {
   fetch('https://api.tvmaze.com/shows')
     .then((res) => res.json())
     .then((data) => {
@@ -8,5 +8,10 @@ export function getMovies() {
         movieID.push(data[i]);
       }
       // console.log(movieID);
+      getMovies(movieID)
     });
+}
+
+export function getMovies(movieID){
+  return movieID;
 }
