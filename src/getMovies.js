@@ -1,11 +1,9 @@
 /* eslint-disable no-use-before-define */
 
-import { postLike, displayLikes, getLikes } from './getLikes.js';
+import { postLike, getLikes } from './getLikes.js';
 
 const frontMovies = document.querySelector('.Shows');
 const showsList = [];
-// let myArr = [];
-// Generate like array
 
 export default function getShows() {
   fetch('https://api.tvmaze.com/shows')
@@ -20,13 +18,12 @@ export default function getShows() {
 
 const popShow = async (arr) => {
   frontMovies.innerHTML = '';
-  let likeArray = await getLikes();
+  const likeArray = await getLikes();
   if (likeArray === undefined) {
     likeArray = [];
   }
+  
   console.log("This is like Array: ", likeArray);
-  // console.log(likeArray);
-  getLikes();
   arr.forEach((movie, index) => {
     let eachMovie = `<div class=movie id=${movie.id}>
       <h1 class="movie-title">${movie.name}</h1>
@@ -48,27 +45,19 @@ const popShow = async (arr) => {
         </div>`;
     }
     frontMovies.insertAdjacentHTML('beforeend', eachMovie);
-    // document.querySelectorAll('.fas').forEach((Heartbtn, index) => {
-    //   index += 1;
-    //   // console.log("Index for like buttons: ", index);
-    //   Heartbtn.addEventListener('click', () => {
-    //     const heartID = index;
-    //     console.log("The ID we are posting to API: ", index);
-    //     console.log(`'${heartID}'`);
-    //     postLike(`'${heartID}'`);
-
-    // likeContainer[index].innerHTML = `${likeArray[index].likes + 1} Likes`;
-    // likeArray[index].likes += 1;
-    // });
-    // });
   });
+
   const likeIcons = document.querySelectorAll('.fa-heart');
-  likeIcons.forEach((like) => {
-    const movieID = like.dataset.id;
+  const likeContainer = document.querySelectorAll('.likes');
+  likeIcons.forEach((like,index) => {
     like.addEventListener('click', () => {
-      postLike(movieID);
+      postLike(index+1);
+      likeContainer[index].innerHTML = `${likeArray[index].likes + 1} Likes`;
+      likeArray[index].likes += 1;
     });
   });
+  
+ 
 };
 
-const likeContainer = document.querySelectorAll('.likes');
+
