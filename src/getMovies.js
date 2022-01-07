@@ -39,14 +39,26 @@ const popShow =  async(arr,likeArray) => {
   
   const likeIcons = document.querySelectorAll('.fa-heart');
   const likeContainer = document.querySelectorAll('.likes');
+  //console.log("The array " ,likeArray);
   likeIcons.forEach((like,index) => {
-    like.addEventListener('click', () => {
-      postLike(index+1);
-      console.log("Item id ", index+1);
-      likeContainer[index].innerHTML = `${likeArray[index].likes + 1} Likes`;
+    like.addEventListener('click',async () => {
+      await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1nLM5MTDuqVGBJxBgtuq/likes', {
+        method: 'POST',
+        body: JSON.stringify({
+          item_id: like.dataset.id,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      });
       likeArray[index].likes += 1;
+      likeContainer[index].innerHTML = `${likeArray[index].likes} Likes`;
+      console.log("Updated",likeArray);
+      //console.log("The like Id",likeArray[index].item_id);
+
     });
   });
+  
 };
 
 
@@ -137,8 +149,8 @@ export default async function getShows() {
   for (let i = 0; i < 16; i += 1) {
     showsList.push(data[i]);
   }
-  let likeArray = await getLikes();
   
+  let likeArray = await getLikes();
   popShow(showsList,likeArray);
   
   const commentBtns = document.querySelectorAll('.comment-btn');

@@ -1,8 +1,9 @@
 
-export function postLike(itemID) {
+/*export function postLike(itemID) {
   //itemID = parseInt(itemID, 10);
   // itemID += 1;
-  fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/OaYRaZuaQWxPCtxMXGJA/likes', {
+  
+  fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1nLM5MTDuqVGBJxBgtuq/likes', {
     method: 'POST',
     headers: { 'Content-type': 'application/json' },
     body: JSON.stringify({ item_id: `${itemID}` }),
@@ -11,7 +12,7 @@ export function postLike(itemID) {
     .then((data) => console.log(data));
   console.log("This is the itemID we get into API: ", itemID);
   // location.reload();
-}
+}*/
 
 // export function displayLikes(likes) {
 //   console.log("This is from displayLikes function:", likes);
@@ -26,7 +27,7 @@ export function postLike(itemID) {
 // }
 
 export const getLikes = async() => {
-  const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/OaYRaZuaQWxPCtxMXGJA/likes');
+  const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1nLM5MTDuqVGBJxBgtuq/likes');
   const json = await response.json();
   return json;
 };
