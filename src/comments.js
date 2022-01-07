@@ -22,9 +22,12 @@ export function displayComments(itemId) {
         commentsList.appendChild(singleComment);
       }
       const allComments = document.getElementsByClassName('single-comment');
+      console.log(allComments);
       const counter = allComments.length;
+      console.log(counter);
       const commentsCounter = document.getElementsByClassName('comments-count');
-      commentsCounter.innerText = `${counter}`;
+      console.log(commentsCounter);
+      commentsCounter[0].innerText = `(${counter})`;
       // data.forEach((post) => {
       //   const singleComment = document.createElement('p');
       //   singleComment.innerText = `${post.creation_date}, ${post.username}: ${post.comment}`;

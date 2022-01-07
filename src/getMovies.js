@@ -64,7 +64,7 @@ export function createModal(showID) {
       </div>
     </div>
     <div class="comments-section">
-      <h2>Comments <span class="comments-count" data-id=${showID + 1}></span></h2>
+      <h2 class="comments-title">Comments <span class="comments-count" data-id=${showID + 1}></span></h2>
       <div class="comments-list"></div>
       <h3>Add a new comment</h3>
       <form id="form" data-id=${showID + 1}>
