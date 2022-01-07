@@ -1,5 +1,6 @@
 import { submitComment, displayComments } from './comments.js';
 
+
 export const showsList = [];
 const frontMovies = document.querySelector('.Shows');
 const modalPopUp = document.querySelector('.modal');
