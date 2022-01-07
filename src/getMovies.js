@@ -84,6 +84,27 @@ export function createModal(showID) {
     e.preventDefault();
     let userName = document.getElementById('name').value;
     let comment = document.getElementById('comment-text').value;
+    // Post the comment on the DOM
+    const singleComment = document.createElement('p');
+    
+    const todaysDate = new Date();
+
+    function convertDate(date) {
+      const yyyy = date.getFullYear().toString();
+      const mm = (date.getMonth() + 1).toString();
+      const dd = date.getDate().toString();
+      const mmChars = mm.split('');
+      const ddChars = dd.split('');
+      return yyyy + '-' + (mmChars[1] ? mm : '0' + mmChars[0]) + '-' + (ddChars[1] ? dd : '0' + ddChars[0]);
+    }
+    let currentDate = convertDate(todaysDate);
+    singleComment.innerText = currentDate + ', ' + userName + ': ' + comment;
+    console.log(singleComment.innerText);
+    singleComment.classList.add('single-comment');
+    console.log(singleComment);
+    const commentsList = document.querySelector('.comments-list');
+    commentsList.appendChild(singleComment);
+    // Submit the comment to API
     submitComment(`'${showID}'`, userName, comment);
     userName = '';
     comment = '';
