@@ -1,25 +1,54 @@
 import { submitComment, displayComments } from './comments.js';
-
+import { postLike, displayLikes, getLikes } from './getLikes.js';
 
 export const showsList = [];
 const frontMovies = document.querySelector('.Shows');
 const modalPopUp = document.querySelector('.modal');
 
-const popShow = (arr) => {
+const popShow =  async(arr,likeArray) => {
   frontMovies.innerHTML = '';
-  arr.forEach((movie) => {
-    const eachMovie = `
+  
+  //let likeArray = [];
+/*  if (likeArray === undefined) {
+    likeArray = [];
+  }*/
+
+  arr.forEach((movie,index) => {
+    let eachMovie = `
     <div class=movie id=${movie.id}>
       <h2 class="movie-title">${movie.name}</h2>
       <img class="movie-image" src=${movie.image.medium}>
       <div class= "userInterAct">
         <button class="comment-btn" value="${movie.id}">Comment</button>
-        <i class="fas fa-heart" data-id="${movie.id}"></i>
-      </div>
-    </div>`;
-    frontMovies.insertAdjacentHTML('beforeend', eachMovie);
+        <div class='likesCont'>
+          <i class="fas fa-heart" data-id=${movie.id}></i>`;
+        if (likeArray[index] === undefined) {
+            eachMovie += `<p class="likes"> 0 Likes</p>
+                  </div>
+                </div>
+              </div>`;
+          }
+        else {
+            eachMovie += `<p class="likes">${likeArray[index].likes} Likes</p>
+                    </div>
+                </div>
+              </div>`;
+          }
+          frontMovies.insertAdjacentHTML('beforeend', eachMovie);
+  });
+  
+  const likeIcons = document.querySelectorAll('.fa-heart');
+  const likeContainer = document.querySelectorAll('.likes');
+  likeIcons.forEach((like,index) => {
+    like.addEventListener('click', () => {
+      postLike(index+1);
+      console.log("Item id ", index+1);
+      likeContainer[index].innerHTML = `${likeArray[index].likes + 1} Likes`;
+      likeArray[index].likes += 1;
+    });
   });
 };
+
 
 function convertDate(date) {
   const yyyy = date.getFullYear().toString();
@@ -108,7 +137,10 @@ export default async function getShows() {
   for (let i = 0; i < 16; i += 1) {
     showsList.push(data[i]);
   }
-  popShow(showsList);
+  let likeArray = await getLikes();
+  
+  popShow(showsList,likeArray);
+  
   const commentBtns = document.querySelectorAll('.comment-btn');
   commentBtns.forEach((btn) => {
     const ID = btn.value;
