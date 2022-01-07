@@ -1,5 +1,5 @@
 import { submitComment, displayComments } from './comments.js';
-import { getLikes } from './getLikes.js';
+import getLikes from './getLikes.js';
 
 export const showsList = [];
 const frontMovies = document.querySelector('.Shows');
@@ -33,7 +33,6 @@ const popShow = async (arr, likeArray) => {
 
   const likeIcons = document.querySelectorAll('.fa-heart');
   const likeContainer = document.querySelectorAll('.likes');
-  // console.log("The array " ,likeArray);
   likeIcons.forEach((like, index) => {
     like.addEventListener('click', async () => {
       await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1nLM5MTDuqVGBJxBgtuq/likes', {
@@ -59,6 +58,18 @@ function convertDate(date) {
   const ddChars = dd.split('');
   return `${yyyy}-${mmChars[1] ? mm : `0${mmChars[0]}`}-${ddChars[1] ? dd : `0${ddChars[0]}`}`;
 }
+
+export function moviesCount() {
+  console.log("ShowsList:", showsList);
+  const count = showsList.length;
+  console.log("Count", count);
+  return count;
+}
+
+const counter = document.getElementsByClassName('movies-counter');
+console.log(counter);
+const number = moviesCount();
+counter[0].innerText = `(${number})`;
 
 export function createModal(showID) {
   const closeBtn = document.getElementsByClassName('close-btn');
@@ -132,7 +143,7 @@ export function createModal(showID) {
   displayComments(`'${showID}'`);
 }
 
-export default async function getShows() {
+export async function getShows() {
   const res = await fetch('https://api.tvmaze.com/shows');
   const data = await res.json();
   for (let i = 0; i < 16; i += 1) {
