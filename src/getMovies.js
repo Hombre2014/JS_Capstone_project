@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 
-import { postLike, displayLikes } from './getLikes.js';
+import { postLike, displayLikes, getLikes } from './getLikes.js';
 
 const frontMovies = document.querySelector('.Shows');
 const showsList = [];
@@ -20,11 +20,13 @@ export default function getShows() {
 
 const popShow = async (arr) => {
   frontMovies.innerHTML = '';
-  let likeArray = await displayLikes();
+  let likeArray = await getLikes();
   if (likeArray === undefined) {
     likeArray = [];
   }
   console.log("This is like Array: ", likeArray);
+  // console.log(likeArray);
+  getLikes();
   arr.forEach((movie, index) => {
     let eachMovie = `<div class=movie id=${movie.id}>
       <h1 class="movie-title">${movie.name}</h1>
