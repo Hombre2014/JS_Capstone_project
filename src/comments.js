@@ -14,13 +14,17 @@ export function displayComments(itemId) {
     .then((data) => {
       console.log(data);
       const commentsList = document.querySelector('.comments-list');
-      // const lastElement = document.getElementById('dummy');
       for (let i = 0; i < data.length; i += 1) {
         const singleComment = document.createElement('p');
         singleComment.innerText = `${data[i].creation_date}, ${data[i].username}: ${data[i].comment}`;
+        singleComment.classList.add('single-comment');
         console.log(singleComment);
         commentsList.appendChild(singleComment);
       }
+      const allComments = document.getElementsByClassName('single-comment');
+      const counter = allComments.length;
+      const commentsCounter = document.getElementsByClassName('comments-count');
+      commentsCounter.innerText = `${counter}`;
       // data.forEach((post) => {
       //   const singleComment = document.createElement('p');
       //   singleComment.innerText = `${post.creation_date}, ${post.username}: ${post.comment}`;

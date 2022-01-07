@@ -8,14 +8,15 @@ const modalPopUp = document.querySelector('.modal');
 const popShow = (arr) => {
   frontMovies.innerHTML = '';
   arr.forEach((movie) => {
-    const eachMovie = `<div class=movie id=${movie.id}>
-           <h2 class="movie-title">${movie.name}</h2>
-           <img class="movie-image" src=${movie.image.medium}>
-           <div class= "userInterAct">
-             <button class="comment-btn" value="${movie.id}">Comment</button>
-             <i class="fas fa-heart" data-id="${movie.id}"></i>
-          </div>
-        </div>`;
+    const eachMovie = `
+    <div class=movie id=${movie.id}>
+      <h2 class="movie-title">${movie.name}</h2>
+      <img class="movie-image" src=${movie.image.medium}>
+      <div class= "userInterAct">
+        <button class="comment-btn" value="${movie.id}">Comment</button>
+        <i class="fas fa-heart" data-id="${movie.id}"></i>
+      </div>
+    </div>`;
     frontMovies.insertAdjacentHTML('beforeend', eachMovie);
   });
 };
@@ -63,10 +64,8 @@ export function createModal(showID) {
       </div>
     </div>
     <div class="comments-section">
-      <h2>Comments <span class="comments-count"> </span></h2>
-      <div class="comments-list">
-        <p id="dummy"></p>
-      </div>
+      <h2>Comments <span class="comments-count" data-id=${showID + 1}></span></h2>
+      <div class="comments-list"></div>
       <h3>Add a new comment</h3>
       <form id="form" data-id=${showID + 1}>
         <input type="text" placeholder="Your name" id="name" data-id=${showID + 1}>
@@ -86,8 +85,8 @@ export function createModal(showID) {
     let userName = document.getElementById('name').value;
     let comment = document.getElementById('comment-text').value;
     submitComment(`'${showID}'`, userName, comment);
-    // userName = '';
-    // comment = '';
+    userName = '';
+    comment = '';
   });
   showID += 1;
   displayComments(`'${showID}'`);
