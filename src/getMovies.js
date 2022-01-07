@@ -1,4 +1,4 @@
-import { submitComment, displayComments } from './comments.js';
+import { submitComment, displayComments, updateCounter } from './comments.js';
 
 export const showsList = [];
 const frontMovies = document.querySelector('.Shows');
@@ -87,11 +87,8 @@ export function createModal(showID) {
     singleComment.classList.add('single-comment');
     const commentsList = document.querySelector('.comments-list');
     commentsList.appendChild(singleComment);
-    // Update the comments counter
-    const allComments = document.getElementsByClassName('single-comment');
-    const counter = allComments.length;
-    const commentsCounter = document.getElementsByClassName('comments-count');
-    commentsCounter[0].innerText = `(${counter})`;
+    // Update counter
+    updateCounter();
     // Submit the comment to API
     submitComment(`'${showID}'`, userName, comment);
     document.getElementById('name').value = '';
