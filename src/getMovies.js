@@ -1,4 +1,3 @@
-// import createModal from './comments.js';
 import { submitComment, displayComments } from './comments.js';
 
 export const showsList = [];
@@ -21,16 +20,14 @@ const popShow = (arr) => {
   });
 };
 
-// export function addComment(showID) {
-//   // preventDefault();
-//   // const id = +e.target.dataset.id;
-//   console.log(showID);
-//   let userName = document.getElementById('name').value;
-//   let comment = document.getElementById('comment-text').value;
-//   submitComment(`'${showID}'`, userName, comment);
-//   userName = '';
-//   comment = '';
-// }
+function convertDate(date) {
+  const yyyy = date.getFullYear().toString();
+  const mm = (date.getMonth() + 1).toString();
+  const dd = date.getDate().toString();
+  const mmChars = mm.split('');
+  const ddChars = dd.split('');
+  return `${yyyy}-${mmChars[1] ? mm : `0${mmChars[0]}`}-${ddChars[1] ? dd : `0${ddChars[0]}`}`;
+}
 
 export function createModal(showID) {
   const closeBtn = document.getElementsByClassName('close-btn');
@@ -38,8 +35,6 @@ export function createModal(showID) {
   modalPopUp.style.width = '90vw';
   modalPopUp.style.height = '90vh';
   modalPopUp.style.backgroundColor = '#f6f6f6';
-  console.log("ShowID received from clicked button: ", showID);
-  // showID += 1;
   const content = `
   <div class="show-container">
     <span class="close-btn">×</span>
@@ -82,58 +77,31 @@ export function createModal(showID) {
   const newPost = document.getElementById('form');
   newPost.addEventListener('submit', (e) => {
     e.preventDefault();
-    let userName = document.getElementById('name').value;
-    let comment = document.getElementById('comment-text').value;
+    const userName = document.getElementById('name').value;
+    const comment = document.getElementById('comment-text').value;
     // Post the comment on the DOM
     const singleComment = document.createElement('p');
     const todaysDate = new Date();
-    function convertDate(date) {
-      const yyyy = date.getFullYear().toString();
-      const mm = (date.getMonth() + 1).toString();
-      const dd = date.getDate().toString();
-      const mmChars = mm.split('');
-      const ddChars = dd.split('');
-      return yyyy + '-' + (mmChars[1] ? mm : '0' + mmChars[0]) + '-' + (ddChars[1] ? dd : '0' + ddChars[0]);
-    }
-    let currentDate = convertDate(todaysDate);
-    singleComment.innerText = currentDate + ', ' + userName + ': ' + comment;
-    console.log(singleComment.innerText);
+    const currentDate = convertDate(todaysDate);
+    singleComment.innerText = `${currentDate}, ${userName}: ${comment}`;
     singleComment.classList.add('single-comment');
-    console.log(singleComment);
     const commentsList = document.querySelector('.comments-list');
     commentsList.appendChild(singleComment);
     // Update the comments counter
     const allComments = document.getElementsByClassName('single-comment');
-    console.log(allComments);
     const counter = allComments.length;
-    console.log(counter);
     const commentsCounter = document.getElementsByClassName('comments-count');
-    console.log(commentsCounter);
     commentsCounter[0].innerText = `(${counter})`;
     // Submit the comment to API
     submitComment(`'${showID}'`, userName, comment);
-    userName = '';
-    comment = '';
+    document.getElementById('name').value = '';
+    document.getElementById('comment-text').value = '';
   });
   showID += 1;
   displayComments(`'${showID}'`);
-  // When the user clicks anywhere outside of the modal, close it
-  // window.onclick = (event) => {
-  //   if (!event.target === modalPopUp) {
-  //     modalPopUp.style.display = 'none';
-  //   }
-  // };
 }
 
 export default async function getShows() {
-  // fetch('https://api.tvmaze.com/shows')
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     for (let i = 0; i < 20; i += 1) {
-  //       showsList.push(data[i]);
-  //     }
-  //     popShow(showsList);
-  //   });
   const res = await fetch('https://api.tvmaze.com/shows');
   const data = await res.json();
   for (let i = 0; i < 16; i += 1) {
@@ -147,5 +115,4 @@ export default async function getShows() {
       createModal(ID - 1);
     });
   });
-  // return showsList;
 }
