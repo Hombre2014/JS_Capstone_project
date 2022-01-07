@@ -86,9 +86,7 @@ export function createModal(showID) {
     let comment = document.getElementById('comment-text').value;
     // Post the comment on the DOM
     const singleComment = document.createElement('p');
-    
     const todaysDate = new Date();
-
     function convertDate(date) {
       const yyyy = date.getFullYear().toString();
       const mm = (date.getMonth() + 1).toString();
@@ -104,6 +102,14 @@ export function createModal(showID) {
     console.log(singleComment);
     const commentsList = document.querySelector('.comments-list');
     commentsList.appendChild(singleComment);
+    // Update the comments counter
+    const allComments = document.getElementsByClassName('single-comment');
+    console.log(allComments);
+    const counter = allComments.length;
+    console.log(counter);
+    const commentsCounter = document.getElementsByClassName('comments-count');
+    console.log(commentsCounter);
+    commentsCounter[0].innerText = `(${counter})`;
     // Submit the comment to API
     submitComment(`'${showID}'`, userName, comment);
     userName = '';
