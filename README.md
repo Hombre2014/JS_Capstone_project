@@ -6,7 +6,7 @@
 
 ## Wireframe requirements
 
-### The Home Page  low fidelity
+### The Home Page low fidelity
 ![Home.png](./Home.png)
 
 ### The low fidelity for comment pop up page
@@ -30,7 +30,6 @@ The JavaScript capstone project  is about building your own web application base
 - You should build these interfaces:
   - The home page.
   - The comments popup.
-  - The reservations popup (only for the groups of 3 students).
 - You should follow the layout of the wireframes provided. You should personalize the rest of the design including colors, typographies, spacings, etc.
 - Home page
   - When the page loads, the webapp retrieves data from:
@@ -63,10 +62,10 @@ Counters We have counters in all the interfaces that show:
 
  ### Cloning the repo to your local system (if you already have git, installed in your system)
 
- 1) [Copy this Link](https://github.com/Hombre2014/JS_Capstone_project.git)
+ 1) Copy this Link `https://github.com/Hombre2014/JS_Capstone_project.git`
  2) Open your terminal or command line
- 3) [git clone](https://github.com/Hombre2014/JS_Capstone_project.git)
- 4) Open the folder with your code editor
+ 3) Run the command: `git clone https://github.com/Hombre2014/JS_Capstone_project.git`
+ 4) Open the folder with your code editor: `cd JS_Capstone_project`
  5) Now You can edit the code and check the changes in the browser using Live Server
 
 ## Built With
@@ -86,7 +85,7 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 - Internet connection and browser
-- A text editor(preferably Visual Studio Code)
+- A text editor (preferably Visual Studio Code)
 - Browser
 
 ### Setup
@@ -100,15 +99,16 @@ To get a local copy up and running follow these simple example steps.
 
 ### Usage
 
-- Clone the repository using "git clone https://github.com/Hombre2014/JS_Capstone_project.git"
-- Change directory into the project folder
-- Run npm install
-- Run npm start
+- Clone the repository using `git clone https://github.com/Hombre2014/JS_Capstone_project.git`
+- Change directory into the project folder: `cd JS_Capstone_project`
+- Run `npm install`
+- Run `npm start`
 - A new browser will open automatically with application loaded
 
 ### Run tests
 
-- N/A
+- Test the number of movies loaded with Jest
+- Test the number of comments with Jest
 
 ### Deployment
 
