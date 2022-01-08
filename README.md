@@ -15,6 +15,9 @@
 ## Actual screenshot
 ![Screenshot](./src/Screenshot.png)
 
+## Video presentation
+[Video link](https://youtu.be/QOhLsW7cuFU)
+
 ## Description
 The JavaScript capstone project  is about building your own web application based on an external API. You will select an API that provides data about a topic that you like and then build the webapp around it.
 
@@ -76,7 +79,7 @@ Counters We have counters in all the interfaces that show:
 
 ## Live Demo
 
-- [Live demo link](http://chamkoriyski.me/JS_Capstone_project/dist)
+- [Live demo link](https://chamkoriyski.me/JS_Capstone_project/dist)
 
 ## Getting Started
 
