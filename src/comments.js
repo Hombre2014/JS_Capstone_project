@@ -1,4 +1,4 @@
-export function submitComment(itemId, userName, userComment) {
+function submitComment(itemId, userName, userComment) {
   fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1nLM5MTDuqVGBJxBgtuq/comments', {
     method: 'POST',
     headers: { 'Content-type': 'application/json' },
@@ -8,7 +8,7 @@ export function submitComment(itemId, userName, userComment) {
     .then((data) => (data));
 }
 
-export function displayComments(itemId) {
+const displayComments = (itemId) => {
   fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1nLM5MTDuqVGBJxBgtuq/comments?item_id='${itemId}'`)
     .then((res) => res.json())
     .then((data) => {
@@ -24,9 +24,9 @@ export function displayComments(itemId) {
       const commentsCounter = document.getElementsByClassName('comments-count');
       commentsCounter[0].innerText = `(${counter})`;
     });
-}
+};
 
-export function getComments(itemId) {
+const getComments = (itemId) => {
   fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1nLM5MTDuqVGBJxBgtuq/comments?item_id='${itemId}'`)
     .then((res) => res.json())
     .then((data) => {
@@ -36,4 +36,6 @@ export function getComments(itemId) {
       commentsList.appendChild(singleComment);
     });
   displayComments(itemId);
-}
+};
+
+export { getComments, submitComment, displayComments };
