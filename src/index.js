@@ -1,13 +1,12 @@
-import _ from 'lodash';
 import './style.css';
+import logo from './logoImage.jpg';
+import { getShows } from './getMovies.js';
 
-function component() {
-  const element = document.createElement('div');
+// Adding the logo image
+const element = document.querySelector('.logoContainer');
+const mylogo = new Image();
+mylogo.className = 'logo';
+mylogo.src = logo;
+element.append(mylogo);
 
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-  return element;
-}
-
-document.body.appendChild(component());
+getShows();
