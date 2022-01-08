@@ -76,7 +76,7 @@ Counters We have counters in all the interfaces that show:
 
 ## Live Demo
 
-- Not deployed yet.
+- [Live demo link](http://chamkoriyski.me/JS_Capstone_project/dist)
 
 ## Getting Started
 
