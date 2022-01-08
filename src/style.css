@@ -221,7 +221,6 @@ button:hover,
 .fab:hover {
   background-color: #2c8ce6;
   transform: scale(1.125);
-  background-color: #b3dadb;
   transition: all 0.4s;
 }
 
@@ -251,12 +250,12 @@ button:hover,
     font-weight: 600;
   }
 
-  .dev > h3 {
-    font-size: 1rem;
-  }
-
   h3 {
     font-size: 1.125rem;
     font-weight: 700;
+  }
+
+  .dev > h3 {
+    font-size: 1rem;
   }
 }
