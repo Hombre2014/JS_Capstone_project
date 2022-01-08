@@ -11,7 +11,6 @@ export function callShows() {
       for (let i = 0; i < 20; i += 1) {
         movieID.push(data[i]);
       }
-      // console.log(movieID);
       getMovies(movieID);
     });
 }
