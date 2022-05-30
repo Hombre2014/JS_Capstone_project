@@ -79,7 +79,7 @@ Counters We have counters in all the interfaces that show:
 
 ## Live Demo
 
-- [Live demo link](https://chamkoriyski.me/JS_Capstone_project/dist)
+- [Live demo link](https://yuriy-bonke-movies.netlify.app/)
 
 ## Getting Started
 
